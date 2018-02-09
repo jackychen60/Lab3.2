@@ -17,25 +17,38 @@ public class Sorter {
 	}
 	public static String[] merge(String[]list1,String[]list2)
 	{
-		String empty[] = new String[list1.length + list2.length];
 		
-		for(int i=0;i<=list1.length;i++)
+		String empty[] = new String[list1.length + list2.length];
+		int i=0;
+		int li=0;
+		int ri=0;
+		while((li<list1.length)&&(ri<list2.length))
 		{
-			int a=0;
+			if(list1[li].compareTo(list2[ri])>0)
+			{
+				empty[i]=list2[ri];
+				ri++;
+				i++;
+			}
+			else if(list1[li].compareTo(list2[ri])<0) 
+			{
+				empty[i]=list1[li];
+				li++;
+				i++;
+			}
+		}
+		while(li<list1.length)
+		{
+			empty[i]=list1[li];
+			li++;
+			i++;
 			
-			for(int j=0;j<list2.length;j++)
-				{
-				if(list1[i].compareTo(list2[j])>0)
-				{
-					empty[a]=list1[i];
-					a++;
-									}
-				if(list1[i].compareTo(list2[j])<0)
-				{
-					empty[a]=list2[j];
-					a++;
-									}
-					}
+		}
+		while(ri<list2.length)
+		{
+			empty[i]=list2[ri];
+			ri++;
+			i++;
 		}
 		return empty;
 		
@@ -46,3 +59,5 @@ public class Sorter {
 	}
 */
 }
+
+
